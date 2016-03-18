@@ -46,7 +46,7 @@
     "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
     "remote_path": "./v{version}/{configuration}/",
     "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
-    "host": "https://naclb.s3-eu-central-1.amazonaws.com"
+    "host": "https://scryptb.s3-eu-central-1.amazonaws.com"
   },
   "licenses": [
     {
