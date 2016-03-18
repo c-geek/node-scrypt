@@ -1,7 +1,11 @@
 "use strict";
 
-var scryptNative = require("./build/Release/scrypt")
-  , Crypto = require("crypto")
+var binary = require('node-pre-gyp');
+var path = require('path');
+var binding_path = binary.find(path.resolve(path.join(__dirname,'./package.json')));
+var scryptNative = require(binding_path);
+
+var Crypto = require("crypto")
   , Os = require("os");
 
 var checkNumberOfArguments = function(args, message, numberOfArguments) {

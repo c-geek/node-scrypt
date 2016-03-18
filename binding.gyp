@@ -99,7 +99,7 @@
       ],
     },
     {
-      'target_name': 'scrypt',
+      'target_name': 'scryptb',
       'sources': [
         'src/node-boilerplate/scrypt_common.cc',
         'src/node-boilerplate/scrypt_params_async.cc',
@@ -120,6 +120,17 @@
       ],
       'cflags': ['<@(compiler-flags)'],
       'dependencies': ['scrypt_wrapper','scrypt_lib'],
+    },
+    {
+      "target_name": "action_after_build",
+      "type": "none",
+      "dependencies": [ "<(module_name)" ],
+      "copies": [
+        {
+          "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
+          "destination": "<(module_path)"
+        }
+      ]
     }
   ],
 }

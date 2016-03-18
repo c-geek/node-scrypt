@@ -1,5 +1,5 @@
 {
-  "name": "scrypt",
+  "name": "scryptb",
   "description": "The scrypt crypto library for NodeJS",
   "version": "6.0.1",
   "license": "zlib",
@@ -17,9 +17,8 @@
     "verify"
   ],
   "author": {
-    "name": "Barry Steyn",
-    "email": "barry.steyn@gmail.com",
-    "url": "http://doctrina.org"
+    "name": "Cédric Moreau",
+    "email": "cem.moreau@gmail.com"
   },
   "engines": {
     "node": ">= 0.10"
@@ -28,13 +27,26 @@
     "type": "git",
     "url": "https://github.com/barrysteyn/node-scrypt.git"
   },
+  "main": "index.js",
   "devDependencies": {
+    "aws-sdk": "2.2.43",
     "mocha": "2.2.5",
     "chai": "3.0.0",
     "chai-as-promised": "^5.1.0"
   },
   "dependencies": {
-    "nan": "^2.0.8"
+    "nan": "2.0.8",
+    "node-pre-gyp": "0.6.23"
+  },
+  "bundledDependencies": [
+    "node-pre-gyp"
+  ],
+  "binary": {
+    "module_name": "scryptb",
+    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
+    "remote_path": "./v{version}/{configuration}/",
+    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
+    "host": "https://naclb.s3-eu-central-1.amazonaws.com"
   },
   "licenses": [
     {
@@ -46,7 +58,7 @@
   },
   "scripts": {
     "preinstall": "node node-scrypt-preinstall.js",
-    "install": "node-gyp rebuild",
+    "install": "node-pre-gyp install --fallback-to-build",
     "test": "mocha tests/scrypt-tests.js"
   }
 }
